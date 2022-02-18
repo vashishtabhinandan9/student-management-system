@@ -18,15 +18,15 @@ public class adminframe extends JFrame implements ActionListener {
     adminframe(){
         super("Administrator");
 
-            setSize(1024, 800);//this becomes the size whenyou minimize screen
+        setSize(1024, 800);//this becomes the size whenyou minimize screen
         setExtendedState(JFrame.MAXIMIZED_BOTH);//thsi make s the frame acquire whole screen
 
         ImageIcon a = new ImageIcon(ClassLoader.getSystemResource("university/management/system/icons/third.jpg"));
-            Image a1 = a.getImage().getScaledInstance(1900, 950, Image.SCALE_DEFAULT);
-            ImageIcon a2 = new ImageIcon(a1);
-            JLabel al1 = new JLabel(a2);
+        Image a1 = a.getImage().getScaledInstance(1900, 950, Image.SCALE_DEFAULT);
+        ImageIcon a2 = new ImageIcon(a1);
+        JLabel al1 = new JLabel(a2);
 
-            add(al1);
+        add(al1);
 
         JMenuBar ma  = new JMenuBar();//this is for a menubar
 
@@ -316,10 +316,10 @@ public class adminframe extends JFrame implements ActionListener {
 
         setJMenuBar(ma);//puts the menubar on frame
         /*
-        * so you understad
-        * menuitem -> menu->menubar->frame
-        * menubar goes on frame by setJmenuBar
-        */
+         * so you understad
+         * menuitem -> menu->menubar->frame
+         * menubar goes on frame by setJmenuBar
+         */
         setFont(new Font("Senserif",Font.BOLD,16));
         setLayout(new FlowLayout());
         setVisible(false);
@@ -403,7 +403,7 @@ public class adminframe extends JFrame implements ActionListener {
                 break;
 
             case "particular student":
-                v.viewfee();
+                v.searchparstu();
                 break;
 
             case "Notepad":
@@ -433,7 +433,7 @@ public class adminframe extends JFrame implements ActionListener {
 
 
 
-        }
+    }
 
     public static void main(String[] args){
 
@@ -445,7 +445,7 @@ public class adminframe extends JFrame implements ActionListener {
 
 
 
-    }
+}
 
 
 

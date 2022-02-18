@@ -203,7 +203,7 @@ public class teacherframe extends JFrame implements ActionListener {
                 break;
 
             case "Particular Student":
-                v.viewfee();
+                v.searchparstu();
                 break;
 
             case "Exit":
