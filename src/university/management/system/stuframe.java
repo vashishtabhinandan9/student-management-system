@@ -1,17 +1,26 @@
 package university.management.system;
 import javax.swing.*;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 
-public class stuframe extends JFrame implements ActionListener {
+public class stuframe  extends JFrame implements ActionListener, MouseListener {
+    JMenu parstu,update,report,at,ls;
+    String sid;
 
     examination e=new examination();
+    //Login l=new Login();
 
-    stuframe(){
-        super("Student");
+
+    public stuframe(String stid){
+        sid=stid;
+
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+
+        setTitle("Student");
 
         setSize(1024, 600);
         ImageIcon a = new ImageIcon(ClassLoader.getSystemResource("university/management/system/icons/third.jpg"));
@@ -25,45 +34,40 @@ public class stuframe extends JFrame implements ActionListener {
         JMenuBar ms=new JMenuBar();
 
         {
-            JMenu parstu = new JMenu("Details");
-
-
-
+            parstu = new JMenu("Details");
             parstu.setForeground(Color.BLUE);
-
             ms.add(parstu);
-
-            parstu.addActionListener(this);
-
+            parstu.addMouseListener(this);
+            parstu.setMnemonic(KeyEvent.VK_D);
         }//view your details
 
         {
-            JMenu update =new JMenu("Update");
+            update =new JMenu("Update");
             update.setForeground(Color.RED);
-
             ms.add(update);
-            update.addActionListener(this);
-
+            //update.addActionListener(this);
+            update.addMouseListener(this);
+            update.setMnemonic(KeyEvent.VK_U);
 
         }//update your details
 
         {
-            JMenu report = new JMenu("Examination");
+            report = new JMenu("Examination");
             report.setForeground(Color.BLUE);
-
             ms.add(report);
-            report.addActionListener(this);
-
+            //report.addActionListener(this);
+            report.addMouseListener(this);
+            report.setMnemonic(KeyEvent.VK_R);
         }//view your report"
 
         {
-            JMenu at = new JMenu("Attendance");
+            at = new JMenu("Attendance");
             at.setForeground(Color.RED);
 
             ms.add(at);
-            at.addActionListener(this);
-
-
+            //at.addActionListener(this);
+            at.addMouseListener(this);
+            at.setMnemonic(KeyEvent.VK_N);
         }//view your attendance
 
         {
@@ -99,10 +103,12 @@ public class stuframe extends JFrame implements ActionListener {
         }//view your fee status and fee structur
 
         {
-            JMenu ls= new JMenu("Book Status");
+            ls= new JMenu("Book Status");
             ls.setForeground(Color.RED);
             ms.add(ls);
-            ls.addActionListener(this);
+            //ls.addActionListener(this);
+            ls.addMouseListener(this);
+
         }//view your bookstatus
 
         {
@@ -128,7 +134,7 @@ public class stuframe extends JFrame implements ActionListener {
         setJMenuBar(ms);
         setFont(new Font("Senserif",Font.BOLD,16));
         setLayout(new FlowLayout());
-        setVisible(false);
+        //setVisible(false);
 
 
     }
@@ -138,42 +144,95 @@ public class stuframe extends JFrame implements ActionListener {
         //menuitems
 
         switch (msg){
-
-
+            /*
             case "Examination":
-                e.viewreport();
-                //new AddStudent().f.setVisible(true);
+               //e.finalreport(sid);
                 break;
 
             case "Details":
-                //new StudentDetails().setVisible(true);
+               // new view().parstu(l.u);
                 break;
 
             case "Attendance":
+               // new Attendance().studentattendencedetails();
                 break;
 
             case "Update":
-                break;
-
-            case "Fee Structure":
-                break;
-
-            case "Your Fees":
+                //new updatestu().updatestudent(l.u);
                 break;
 
             case "Book Status":
                 break;
 
+             */
+            case "Fee Structure":
+                new fees().feestructure();
+                break;
 
+            case "Your Fees":
+                new fees().stufees();
+                break;
+
+            case "Exit":
+                System.exit(0);
+                break;
         }
 
 
 
     }
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if (e.getSource()== parstu){
+            new view().parstu(sid);
+
+        }
+
+        else if(e.getSource() == update){
+            new updatestu().updatestudent(sid);
+
+        }
+
+        else if (e.getSource() ==report){
+            new examination().finalreport(sid);
+
+        }
+        else if (e.getSource()==at){
+            new Attendance().studentattendencedetails();
+        }
+
+        else if(e.getSource() == ls){
+            new view().parstu(sid);
+
+        }
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+
     public static void main(String[] args){
 
-        new stuframe().setVisible(true);
+        //new stuframe(String) ("1");
     }
 
 

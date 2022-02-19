@@ -12,6 +12,8 @@ public class Login extends JFrame implements ActionListener{
     JTextField t1;
     JPasswordField t2;
     JButton b1,b2;
+    //String  u,v;
+
 
 
     Login(){
@@ -25,6 +27,7 @@ public class Login extends JFrame implements ActionListener{
         l1.setBounds(40,20,100,30);
         add(l1);
 
+
         l2 = new JLabel("Password");
         l2.setBounds(40,70,100,30);
         add(l2);
@@ -36,6 +39,9 @@ public class Login extends JFrame implements ActionListener{
         t2=new JPasswordField();
         t2.setBounds(150,70,150,30);
         add(t2);
+
+
+        //  u = t1.getText();
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("university/management/system/icons/second.jpg"));
         Image i2 = i1.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT);
@@ -71,32 +77,40 @@ public class Login extends JFrame implements ActionListener{
 
     }//login frame
 
+
+
+
     public void actionPerformed(ActionEvent ae){
 
-       if (ae.getSource()==b1) {
+        if (ae.getSource()==b1) {
             try {
                 conn c1 = new conn();
+
                 String u = t1.getText();
+
                 String v = t2.getText();
                 String role;
 
-               // String q = "select * from login where usern='" + u + "' and password='" + v + "'";
+                // String q = "select * from login where usern='" + u + "' and password='" + v + "'";
                 String r="select * from login where ID ='" + u + "' and password='" + v + "'";
                 ResultSet rs = c1.s.executeQuery(r);
                 if(rs.next());
                 {
-                     role = rs.getString(4);
+                    role = rs.getString("role");
                 }
 
 
                 switch (role) {
-                    case "teacher" -> new teacherframe().setVisible(true);
+                    case "teacher" -> {
+                        new teacherframe().setVisible(true);
+                        setVisible(false);
+                    }
                     case "administrator" -> {
                         new adminframe().setVisible(true);
                         setVisible(false);
                     }
                     case "student" -> {
-                        new stuframe().setVisible(true);
+                        new stuframe(u).setVisible(true);
                         setVisible(false);
                     }
                     case "librarian" -> {
@@ -126,6 +140,8 @@ public class Login extends JFrame implements ActionListener{
 
     }
     public static void main(String[] arg){
+
+
         new Login();
 
     }

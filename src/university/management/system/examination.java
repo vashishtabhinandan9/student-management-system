@@ -10,20 +10,21 @@ public class examination extends JFrame implements ActionListener{
 
     JLabel l1,l2,l3,l4,l;
     JTextField t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11;
-    JButton b1,b2,b3;
+    JButton b1,b3;
     JPanel contentPane;
-    JTable table;
     JTextField search;
+    JFrame f,f1,f2;
 
 
     void viewreport(){
+        f=new JFrame();
 
-        setBounds(50, 50, 930, 300);//size and location of jpanel
+        f.setBounds(50, 50, 930, 300);//size and location of jpanel
         contentPane = new JPanel();//is simialr to jframe except jframe rreprsents a window where as jpanel is an
         //empty space
         contentPane.setBackground(Color.WHITE);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(contentPane);//adds content pane to frame
+        f.setContentPane(contentPane);//adds content pane to frame
         contentPane.setLayout(null);
 
 
@@ -64,7 +65,7 @@ public class examination extends JFrame implements ActionListener{
         l3.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setVisible(false);
+                f.setVisible(false);
             }
         });
         l3.setForeground(Color.GRAY);
@@ -81,98 +82,97 @@ public class examination extends JFrame implements ActionListener{
         panel.setBackground(Color.WHITE);
         //Book();
 
-        setVisible(true);
+        f.setVisible(true);
 
-    }//put in the ID of student to check resuolt
+    }//put in the ID of student to check result of particular student
 
     void generatereport(){
+        f1=new JFrame("Enter marks of student");
 
-        setSize(500,550);
-        setLocation(400,200);
-        setLayout(null);
+        f1.setSize(500,550);
+        f1.setLocation(400,80);
+        f1.setLayout(null);
 
         l1 = new JLabel("Enter marks of Student");
         l1.setFont(new Font("serif", Font.BOLD, 30));
         l1.setBounds(50,0,500,80);
-        add(l1);
+        f1.add(l1);
 
         l2 = new JLabel("Enter ID");
         l2.setBounds(50,70,200,40);
-        add(l2);
+        f1.add(l2);
 
         t1 = new JTextField();
         t1.setBounds(180,80,200,20);
-        add(t1);
+        f1.add(t1);
 
         l3 = new JLabel("Enter Subject");
         l3.setBounds(50,150,200,40);
-        add(l3);
+        f1.add(l3);
 
         l4 = new JLabel("Enter Marks");
         l4.setBounds(250,150,200,40);
-        add(l4);
+        f1.add(l4);
 
         t2 = new JTextField();
         t2.setText("English");
         t2.setBounds(50,200,200,20);
-        add(t2);
+        f1.add(t2);
 
         t3 = new JTextField();
         t3.setBounds(250,200,200,20);
-        add(t3);
+        f1.add(t3);
 
         t4 = new JTextField();
 
         t4.setText("maths");
         t4.setBounds(50,230,200,20);
-        add(t4);
+        f1.add(t4);
 
         t5 = new JTextField();
         t5.setBounds(250,230,200,20);
-        add(t5);
+        f1.add(t5);
 
         t6 = new JTextField();
 
         t6.setText("Science");
         t6.setBounds(50,260,200,20);
-        add(t6);
+        f1.add(t6);
 
         t7 = new JTextField();
         t7.setBounds(250,260,200,20);
-        add(t7);
+        f1.add(t7);
 
         t8 = new JTextField();
 
         t8.setText("Computer");
         t8.setBounds(50,290,200,20);
-        add(t8);
+        f1.add(t8);
 
         t9 = new JTextField();
         t9.setBounds(250,290,200,20);
-        add(t9);
+        f1.add(t9);
 
         t10 = new JTextField();
 
         t10.setText("SST");
         t10.setBounds(50,320,200,20);
-        add(t10);
+        f1.add(t10);
 
         t11 = new JTextField();
         t11.setBounds(250,320,200,20);
-        add(t11);
+        f1.add(t11);
 
         b1 = new JButton("Submit");
         b1.setBounds(50,360,100,30);
         b1.setBackground(Color.BLACK);
         b1.setForeground(Color.WHITE);
-        add(b1);
+        f1.add(b1);
 
         b1.addActionListener(this);
 
 
-        setVisible(true);
-        setSize(600,500);
-        setLocation(400,150);
+        f1.setVisible(true);
 
         getContentPane().setBackground(Color.WHITE);
     }//put in teh marks of student
@@ -180,42 +180,33 @@ public class examination extends JFrame implements ActionListener{
     void finalreport(String str){
         JTextArea t1;
         JPanel p1;
+        f2 =new JFrame();
 
-        setSize(500,600);
-        setLayout(new BorderLayout());
-        setVisible(true);
-
+        f2.setSize(500,600);
+        f2.setLayout(new BorderLayout());
+        f2.setVisible(true);
+        f2.setLocation(450,40);
         p1 = new JPanel();
-
         t1 = new JTextArea(50,15);
         JScrollPane jsp = new JScrollPane(t1);
         t1.setFont(new Font("Senserif",Font.ITALIC,18));
-
-        add(p1,"North");
-
-        add(jsp,"Center");
-
-        setLocation(450,200);
-        setVisible(true);
+        f2.add(p1,"North");
+        f2.add(jsp,"Center");
 
 
         try{
             conn c = new conn();
 
             t1.setText("\tResult of Examination\n\nSubject\n");
+            t1.append("\n\t"+"English");
+            t1.append("\n\t"+"Maths");
+            t1.append("\n\t"+"Science");
+            t1.append("\n\t"+"Computer");
+            t1.append("\n\t"+"SST");
+            t1.append("\n-----------------------------------------");
+            t1.append("\n");
 
-
-
-
-                t1.append("\n\t"+"English");
-                t1.append("\n\t"+"Maths");
-                t1.append("\n\t"+"Science");
-                t1.append("\n\t"+"Computer");
-                t1.append("\n\t"+"SST");
-                t1.append("\n-----------------------------------------");
-                t1.append("\n");
-
-            ResultSet rs1 = c.s.executeQuery("select * from student where ID="+str);
+            ResultSet rs1 = c.s.executeQuery("select * from student where ID='"+str+"'");
 
             if(rs1.next()){
                 t1.append("\nMarks\n\n\t"+rs1.getInt("eng"));
@@ -237,7 +228,7 @@ public class examination extends JFrame implements ActionListener{
             e.printStackTrace();
         }
 
-    }//maakes the frame for report card
+    }//maakes the frame for report card once you put in the ID from viewreport
 
 
 
@@ -250,7 +241,7 @@ public class examination extends JFrame implements ActionListener{
                 String gstatus;
 
                 String id=t1.getText();
-                String en=t3.getText();
+                //String en=t3.getText();
 
                 int e= Integer.valueOf(t3.getText());
                 int m= Integer.valueOf(t5.getText());
@@ -293,7 +284,7 @@ public class examination extends JFrame implements ActionListener{
                 pstmt.setString(8,grade);
                 pstmt.setString(9,gstatus);
                 pstmt.setString(10,id);
-                pstmt.executeUpdate();
+                pstmt.execute();
 
                 JOptionPane.showMessageDialog(null,"Marks Inserted Successfully");
                 this.setVisible(false);
@@ -303,6 +294,7 @@ public class examination extends JFrame implements ActionListener{
             else if(ae.getSource()==b3){
                 String s= search.getText();
                 finalreport(s);
+                this.setVisible(false);
 
 
             }

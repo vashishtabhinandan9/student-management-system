@@ -17,6 +17,7 @@ public class updatelib extends JFrame implements ActionListener {
     JTextField t1, t2, t3, t4, t5, t6, t7, days;
     JButton b1, b2;
     Choice c2, fh, sh;
+    JComboBox sta;
 
     JPanel contentPane;
     JTable table;
@@ -97,7 +98,7 @@ public class updatelib extends JFrame implements ActionListener {
     }//take is in the id of student who attendnce you wish to view
 
 
-    void updateattendance(){
+    void updatelibrary(){
         setBounds(50, 50, 930, 400);//size and location of jpanel
         contentPane = new JPanel();//is simialr to jframe except jframe rreprsents a window where as jpanel is an
         //empty space
@@ -118,7 +119,7 @@ public class updatelib extends JFrame implements ActionListener {
         la.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
         la.setBounds(90, 150, 210, 33);
         contentPane.add(la);
-
+/*
         days = new JTextField();
         days.setBackground(Color.WHITE);
         days.setBorder(new LineBorder(new Color(255, 105, 180), 2, true));
@@ -127,6 +128,18 @@ public class updatelib extends JFrame implements ActionListener {
         days.setBounds(250, 150, 250, 33);
         contentPane.add(days);
         days.setColumns(10);
+
+*/
+        String libr[]=new String[] {"returned","not returned"};
+
+        sta =new JComboBox(libr);
+        sta.setBackground(Color.WHITE);
+        sta.setForeground(new Color(47, 79, 79));
+        sta.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 17));
+        sta.setBounds(250, 150, 250, 33);
+        contentPane.add(sta);
+
+
 
 
 
@@ -150,7 +163,7 @@ public class updatelib extends JFrame implements ActionListener {
         contentPane.add(b1);
 
 
-        JLabel l1 = new JLabel("Update Attendance");
+        JLabel l1 = new JLabel("Library status");
         l1.setForeground(Color.green);
         l1.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 30));
         l1.setBounds(300, 15, 400, 47);
@@ -172,7 +185,7 @@ public class updatelib extends JFrame implements ActionListener {
 
 
         JPanel panel = new JPanel();
-        panel.setBorder(new TitledBorder(new LineBorder(Color.RED, 3, true), "Attendance",
+        panel.setBorder(new TitledBorder(new LineBorder(Color.RED, 3, true), "Library",
                 TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
         panel.setBounds(70, 70, 800, 150);
         contentPane.add(panel);
@@ -187,9 +200,9 @@ public class updatelib extends JFrame implements ActionListener {
 
 
     public static void main(String[] args){
-    updatelib ul= new updatelib();
-    //ul.viewattendance();
-    ul.updateattendance();
+        updatelib ul= new updatelib();
+        //ul.viewattendance();
+        //ul.updateattendance();
     }
 
     @Override
@@ -197,7 +210,7 @@ public class updatelib extends JFrame implements ActionListener {
 
         if (ae.getSource()==b1){
             String s= search.getText();
-            String d=days.getText();
+            String d=(String)sta.getSelectedItem();
 
             try{
                 conn c1 = new conn();

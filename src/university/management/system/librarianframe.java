@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 public class librarianframe extends JFrame implements  ActionListener {
 
     view v=new view();
-    updatelib lb =new updatelib();
+
 
     librarianframe(){
         super("Librarian");
@@ -48,6 +48,11 @@ public class librarianframe extends JFrame implements  ActionListener {
             update.setForeground(Color.RED);
 
             JMenuItem bs = new JMenuItem("Book status");
+
+            bs.setBackground(Color.WHITE);
+            bs.setFont(new Font("monospaced",Font.BOLD,16));
+
+
             update.add(bs);
 
             ml.add(update);
@@ -59,7 +64,11 @@ public class librarianframe extends JFrame implements  ActionListener {
             JMenu li =new JMenu("Student");
             li.setForeground(Color.BLUE);
             JMenuItem ls = new JMenuItem("List");
+            ls.setBackground(Color.WHITE);
+            ls.setFont(new Font("monospaced",Font.BOLD,16));
+
             li.add(ls);
+
 
 
             ml.add(li);
@@ -87,6 +96,7 @@ public class librarianframe extends JFrame implements  ActionListener {
         }//to logout
 
         setJMenuBar(ml);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setFont(new Font("Senserif",Font.BOLD,16));
         setLayout(new FlowLayout());
         setVisible(false);
@@ -103,17 +113,16 @@ public class librarianframe extends JFrame implements  ActionListener {
 
             case "Particular Student":
                 //new AddStudent().f.setVisible(true);
-                v.viewstu();
+                v.searchparstu();
                 break;
 
             case "Book status":
                 //new StudentDetails().setVisible(true);
-                lb.updateattendance();
-
-
+                new updatelib().updatelibrary();
                 break;
 
             case "List":
+                v.viewstu();
                 break;
 
             case "Exit":

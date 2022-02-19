@@ -16,7 +16,8 @@ public class teacherframe extends JFrame implements ActionListener {
 
         super("Teacher");
 
-        setSize(1024, 600);
+        setSize(1204, 800);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         ImageIcon a = new ImageIcon(ClassLoader.getSystemResource("university/management/system/icons/third.jpg"));
         Image a1 = a.getImage().getScaledInstance(1900, 950, Image.SCALE_DEFAULT);
         ImageIcon a2 = new ImageIcon(a1);
@@ -38,7 +39,7 @@ public class teacherframe extends JFrame implements ActionListener {
             ImageIcon icon30= new ImageIcon(ClassLoader.getSystemResource("university/management/system/icons/icon16.png"));
             Image image31 = icon30.getImage().getScaledInstance(25, 25,Image.SCALE_DEFAULT);
             te1.setIcon(new ImageIcon(image31));
-            te1.setMnemonic('Q');
+            te1.setMnemonic('A');
             te1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
             te1.setBackground(Color.WHITE);
 
@@ -47,7 +48,7 @@ public class teacherframe extends JFrame implements ActionListener {
             ImageIcon icon32 = new ImageIcon(ClassLoader.getSystemResource("university/management/system/icons/icon17.png"));
             Image image33 = icon32.getImage().getScaledInstance(25, 25,Image.SCALE_DEFAULT);
             te2.setIcon(new ImageIcon(image33));
-            te2.setMnemonic('R');
+            te2.setMnemonic('B');
             te2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
             te2.setBackground(Color.WHITE);
 
@@ -72,8 +73,8 @@ public class teacherframe extends JFrame implements ActionListener {
             ImageIcon icon23 = new ImageIcon(ClassLoader.getSystemResource("university/management/system/icons/icon14.jpg"));
             Image image24 = icon23.getImage().getScaledInstance(25, 25,Image.SCALE_DEFAULT);
             te3.setIcon(new ImageIcon(image24));
-            te3.setMnemonic('M');
-            te3.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
+            te3.setMnemonic('C');
+            te3.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
             te3.setBackground(Color.WHITE);
             attendance.add(te3);
 
@@ -81,8 +82,8 @@ public class teacherframe extends JFrame implements ActionListener {
             ImageIcon icon25 = new ImageIcon(ClassLoader.getSystemResource("university/management/system/icons/icon15.png"));
             Image image26 = icon25.getImage().getScaledInstance(25, 25,Image.SCALE_DEFAULT);
             te4.setIcon(new ImageIcon(image26));
-            te4.setMnemonic('N');
-            te4.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
+            te4.setMnemonic('D');
+            te4.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
             te4.setBackground(Color.WHITE);
             attendance.add(te4);
 
@@ -105,7 +106,7 @@ public class teacherframe extends JFrame implements ActionListener {
             Image image4 = icon4.getImage().getScaledInstance(25, 25,Image.SCALE_DEFAULT);
             u1.setIcon(new ImageIcon(image4));
             u1.setMnemonic('S');
-            u1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
+            u1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
             u1.setBackground(Color.WHITE);
 
 
@@ -128,7 +129,7 @@ public class teacherframe extends JFrame implements ActionListener {
             ImageIcon icon4 = new ImageIcon(ClassLoader.getSystemResource("university/management/system/icons/icon3.png"));
             Image image4 = icon4.getImage().getScaledInstance(25, 25,Image.SCALE_DEFAULT);
             st.setIcon(new ImageIcon(image4));
-            st.setMnemonic('A');
+            st.setMnemonic('P');
             st.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
             st.setBackground(Color.WHITE);
 

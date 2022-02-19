@@ -19,13 +19,14 @@ public class Attendance extends JFrame implements ActionListener {
     JPanel contentPane;
     JTable table;
     JTextField search;
+    JFrame f1,f2;
 
     JTable j1;
     String h[] = {"ID", "Name", "Attendence", "Attendence%"};//1 d array to create colomn names of table
     String d[][] = new String[30][4];//to create rows for respective cloumns
-    int i = 0, j = 0;
 
 
+/*
     void viewattendance() {
 
         setBounds(50, 50, 930, 300);//size and location of jpanel
@@ -95,15 +96,20 @@ public class Attendance extends JFrame implements ActionListener {
 
     }//take is in the id of student who attendnce you wish to view
 //extra bn gyi hai
+
+*/
+
     void studentattendencedetails() {
-        setSize(800, 300);
-        setLocation(450, 150);
+        f1=new JFrame();
+        f1.setSize(800, 300);
+        f1.setLocation(250, 200);
 
         try {
 
             String q = "select * from student";
             conn c1 = new conn();
             ResultSet rs = c1.s.executeQuery(q);
+            int i = 0, j = 0;
             while (rs.next()) {
                 d[i][j++] = rs.getString("ID");
                 d[i][j++] = rs.getString("username");
@@ -114,33 +120,33 @@ public class Attendance extends JFrame implements ActionListener {
             }
 
 
-            j1 = new JTable(d, h);
+
 
 
 
         }
-          catch (Exception e) {
+        catch (Exception e) {
             e.printStackTrace();
-          }
+        }
 
+        j1 = new JTable(d, h);
         JScrollPane s1 = new JScrollPane(j1);
-        add(s1);
+        f1.add(s1);
 
-
-        setVisible(true);
+        f1.setVisible(true);
 
     }//view all the studentsattendence details
 
 
     void updateattendance(){
-        setBounds(50, 50, 930, 400);//size and location of jpanel
+        f2=new JFrame();
+        f2.setBounds(50, 50, 930, 400);//size and location of jpanel
         contentPane = new JPanel();//is simialr to jframe except jframe rreprsents a window where as jpanel is an
         //empty space
         contentPane.setBackground(Color.WHITE);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(contentPane);//adds content pane to frame
         contentPane.setLayout(null);
-
+        f2.setContentPane(contentPane);//adds content pane to frame
 
         JLabel l = new JLabel("Enter ID :");
         l.setForeground(Color.GRAY);
@@ -197,7 +203,7 @@ public class Attendance extends JFrame implements ActionListener {
         l3.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setVisible(false);
+                f2.setVisible(false);
             }
         });
         l3.setForeground(Color.GRAY);
@@ -214,11 +220,11 @@ public class Attendance extends JFrame implements ActionListener {
         panel.setBackground(Color.WHITE);
         //Book();
 
-        setVisible(true);
+        f2.setVisible(true);
 
 
 
-    }//update attendance
+    }//update attendance//take in id and the attendence of the student
 
 
 
@@ -232,40 +238,35 @@ public class Attendance extends JFrame implements ActionListener {
         //to view the attendance use the same function as view particular student
     }
 
-        @Override
+    @Override
     public void actionPerformed(ActionEvent ae) {
 
         if (ae.getSource()==b1){
             String s= search.getText();
             String d=days.getText();
             int r= Integer.valueOf(d);
-             float attpr= (float)(r/2.2);
+            float attpr= (float)(r/2.2);
 
             try{
-                    conn c1 = new conn();
+                conn c1 = new conn();
 
-                    String s1 = "update student set attendence=? , attendenceper=?  where ID=?";
+                String s1 = "update student set attendence=? , attendenceper=?  where ID=?";
 
-                    PreparedStatement pstmt = c1.c.prepareStatement(s1);
-                    pstmt.setInt(1,r);
-                    pstmt.setFloat(2,attpr);
-                    pstmt.setString(3,s);
-                    pstmt.executeUpdate();
+                PreparedStatement pstmt = c1.c.prepareStatement(s1);
+                pstmt.setInt(1,r);
+                pstmt.setFloat(2,attpr);
+                pstmt.setString(3,s);
+                pstmt.executeUpdate();
 
-                    JOptionPane.showMessageDialog(null,"updated Successfully");
-                    this.setVisible(false);
+                JOptionPane.showMessageDialog(null,"updated Successfully");
+                f2.setVisible(false);
 
 
             }catch(Exception e){
                 e.printStackTrace();
             }
 
-
-
-
-
         }
-
 
     }
 }

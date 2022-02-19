@@ -125,6 +125,113 @@ public class updatestu extends JFrame implements ActionListener {
 
     }
 
+    public void updatestudent(String ids) {
+
+        f = new JFrame("Update student");//this is similar to super("add student") but here you are using object
+        //of jframe .earlier you have extended the class form jframe so you were using super
+
+        f.setBackground(Color.WHITE);
+
+        f.setLayout(null);
+
+
+
+
+        sl = new JLabel("Update Student Details");
+        sl.setBounds(320, 30, 500, 50);
+        sl.setFont(new Font("serif", Font.ITALIC, 25));
+        sl.setForeground(Color.black);
+
+        f.add(sl);
+
+        a = new JLabel("Enter the ID of student you want to update ");
+        a.setBounds(50, 100, 500, 30);
+        a.setFont(new Font("serif", Font.ITALIC, 20));
+        f.add(a);
+
+        i = new JTextField();
+        i.setText(ids);
+        i.setBounds(400, 100, 200, 30);
+        f.add(i);
+
+
+        s1 = new JLabel("Name");
+        s1.setBounds(50, 150, 100, 30);
+        s1.setFont(new Font("serif", Font.BOLD, 20));
+        f.add(s1);
+
+        t1 = new JTextField();
+        t1.setBounds(200, 150, 150, 30);
+        f.add(t1);
+
+
+        s3 = new JLabel("Father's Name");
+        s3.setBounds(50, 200, 100, 30);
+        s3.setFont(new Font("serif", Font.BOLD, 20));
+        f.add(s3);
+
+        t3 = new JTextField();
+        t3.setBounds(200, 200, 150, 30);
+        f.add(t3);
+
+        s4 = new JLabel("Mother'Name");
+        s4.setBounds(400, 200, 200, 30);
+        s4.setFont(new Font("serif", Font.BOLD, 20));
+        f.add(s4);
+
+        t4 = new JTextField();
+        t4.setBounds(600, 200, 150, 30);
+        f.add(t4);
+
+
+        s6 = new JLabel("Password");
+        s6.setBounds(400, 250, 100, 30);
+        s6.setFont(new Font("serif", Font.BOLD, 20));
+        f.add(s6);
+
+        t6 = new JTextField();
+        t6.setBounds(600, 250, 150, 30);
+        f.add(t6);
+
+
+        b1 = new JButton("Submit");
+        b1.setBackground(Color.BLACK);
+        b1.setForeground(Color.WHITE);
+        b1.setBounds(250, 350, 150, 40);
+
+        f.add(b1);
+
+        b1.addActionListener(this);
+
+        b2 = new JButton("Cancel");
+        b2.setBackground(Color.BLACK);
+        b2.setForeground(Color.WHITE);
+        b2.setBounds(450, 350, 150, 40);
+
+        f.add(b2);
+
+        fee = new JLabel("Fee status");
+        fee.setBounds(50, 250, 100, 30);
+        fee.setFont(new Font("serif", Font.BOLD, 20));
+        f.add(fee);
+
+        String ff[] = {"paid", "unpaid"};
+        c1 = new JComboBox(ff);
+        c1.setBackground(Color.WHITE);
+        c1.setBounds(200, 250, 150, 30);
+        f.add(c1);
+
+
+
+        b2.addActionListener(this);
+
+
+        f.setVisible(true);
+        f.setSize(900, 600);
+        f.setLocation(200, 50);
+
+
+    }
 
     public static void main(String args[]) {
 
